@@ -67,3 +67,27 @@ CMD [ "./main" ]
 </ol>
 
 <p style="text-align: justify;">Este Dockerfile utiliza o multistage build para separar as etapas de construção e produção, resultando em uma imagem final mais leve, que contém apenas o executável compilado e os recursos essenciais para a execução da aplicação Go. A primeira fase é responsável pela compilação, enquanto a segunda é destinada à execução da aplicação em um ambiente mais leve.</p>
+
+<p style="text-align: justify;">Um outro recurso que pode ser feito com multistage seria utilizar a imagem intermediaria como base para uma outra imagem que tambem pode ser intermediaria, digamos que alem da etapa de <b>build</b> e do <b>app</b> vopce precis pegar um arquivo que esta em uma imagem que ja esta no Docker Hub, o Dockerfile ficara dessa maneira</p>
+
+```Dockerfile
+FROM golang:1.18.10 as build
+
+WORKDIR /build
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
+
+FROM build as package_build
+
+WORKDIR /pkg
+COPY --from=fabricioveronez/pacote-bin:v1 /pkg/pacote.bin .
+
+FROM alpine:3.18.4 as app
+
+WORKDIR /app
+COPY --from=package_build /pkg/pacote.bin .
+COPY --from=package_build /build/main .
+CMD [ "./main" ]
+```
+
+<p style="text-align: justify;">Resumindo a etapa de <b>build</b> seria realizada a criação dos bianrios do projeto, a segunda etapa <b>package_build</b>, usaria a mesma imagem da primeira etapa porem teria apenas o objetivo de copiar o arquivo pacote.bin localizado em uma imagem hospedada no Docker Hub e a terceira etapa apenas copiaria os arquivos binarios e o arquivo da imagem externa.</p>
