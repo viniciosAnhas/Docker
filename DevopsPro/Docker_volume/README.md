@@ -121,3 +121,28 @@ WORKDIR /app
 ```bash
 docker run -it -v primeiro-volume:/app ubuntu-volume
 ```
+
+<h1>Storage tmpfs</h1>
+
+<p style="text-align: justify;">O tmpfs no Docker refere-se a uma opção de armazenamento temporário em memória que pode ser montada em um contêiner. Aqui estão os pontos-chave sobre o tmpfs no Docker:</p>
+
+<ol>
+  <li style="text-align: justify;"><b>Armazenamento em Memória</b></li>
+  <ul>
+    <li style="text-align: justify;">tmpfs é uma opção de armazenamento baseada em memória RAM, permitindo a criação de sistemas de arquivos temporários diretamente na memória do sistema.</li>
+  </ul>
+  <li style="text-align: justify;"><b>Temporário e Volátil</b></li>
+  <ul>
+    <li style="text-align: justify;">Diferentemente de volumes persistentes, o tmpfs é temporário e volátil. Os dados armazenados são perdidos quando o contêiner é removido ou o sistema é reiniciado.</li>
+  </ul>
+  <li style="text-align: justify;"><b>Útil para Dados Temporários</b></li>
+  <ul>
+    <li style="text-align: justify;">tmpfs é útil para armazenar dados temporários ou arquivos que não precisam ser persistentes entre execuções de contêineres.</li>
+  </ul>
+</ol>
+
+<p style="text-align: justify;">Veja agora um exemplo utilizando o tmpfs.</p>
+
+```bash
+docker run -it --mount type=tmpfs,target=/app ubuntu /bin/bash
+```
