@@ -53,3 +53,71 @@
 ```bash
 docker run -v /caminho/no/host:/caminho/no/contêiner imagem-do-contêiner
 ```
+
+<h1>Docker Volume</h1>
+
+<p style="text-align: justify;">Os volumes gerenciados no Docker referem-se a uma forma mais integrada e controlada de lidar com o armazenamento de dados persistente. Eles são criados e gerenciados pelo próprio Docker, proporcionando maior automação e abstrações simplificadas em comparação com bind mounts. Aqui estão os principais pontos sobre volumes gerenciados:</p>
+
+<ol>
+  <li style="text-align: justify;"><b>Criação e Gerenciamento Automático</b></li>
+  <ul>
+    <li style="text-align: justify;">Os volumes gerenciados são criados e gerenciados automaticamente pelo Docker. Não há necessidade de criar diretórios no host ou especificar caminhos absolutos.</li>
+  </ul>
+  <li style="text-align: justify;"><b>Independência do Ciclo de Vida do Contêiner</b></li>
+  <ul>
+    <li style="text-align: justify;">Assim como bind mounts, os volumes gerenciados são independentes do ciclo de vida dos contêineres. Eles persistem mesmo após a remoção do contêiner que os utilizou.</li>
+  </ul>
+  <li style="text-align: justify;"><b>Nomes Amigáveis</b></li>
+  <ul>
+    <li style="text-align: justify;">Os volumes gerenciados podem ser referenciados por nomes amigáveis em vez de caminhos no sistema de arquivos do host. Isso torna mais fácil e legível trabalhar com volumes em ambientes distribuídos.</li>
+  </ul>
+  <li style="text-align: justify;"><b>Segurança e Controle</b></li>
+  <ul>
+    <li style="text-align: justify;">Os volumes gerenciados oferecem maior controle sobre permissões e configurações de segurança em comparação com bind mounts, uma vez que são gerenciados pela própria infraestrutura do Docker.</li>
+  </ul>
+</ol>
+
+<p style="text-align: justify;">Veja a seguir um exmplo de utilização do Docker Volume, iremos utilizar o comando <i>docker volume create</i> para criar o nosso volume.</p>
+
+```bash
+docker volume create primeiro-volume
+```
+
+<p style="text-align: justify;">Para visualizar os volumes criados basta usar o comando <i>docker volume ls</i>.</p>
+
+```bash
+docker volume ls
+```
+
+<p style="text-align: justify;">Iremos mapear o volume criado com um container.</p>
+
+```bash
+docker run -it --mount type=volume,source=primeiro-volume,target=/app ubuntu /bin/bash
+```
+
+<p style="text-align: justify;">Utilize o comando <i>docker volume rm</i> para excluir o volume.</p>
+
+```bash
+docker volume rm primeiro-volume
+```
+
+<p style="text-align: justify;">É possivel acessar o diretorio do volume utilizando o comando <i>docker volume inspect</i>, porem caso você esteja usando Windows ou Mac, você ira percebr que esse diretorio nao existe na sua maquina, já que o Docker funciona em virtualização nesses dois sistemas operacionais.</p>
+
+```bash
+docker volume inspect primeiro-volume
+```
+
+<p style="text-align: justify;">Podemos utilizar o volume em um Dockerfile, podendo assim criar imagens personalizadas, veja o exemplo a seguir.</p>
+
+```Dockerfile
+FROM ubuntu
+
+VOLUME /app
+WORKDIR /app
+```
+
+<p style="text-align: justify;">Para que possamos utilizar essa imagem utilize o seguinte comando.</p>
+
+```bash
+docker run -it -v primeiro-volume:/app ubuntu-volume
+```
