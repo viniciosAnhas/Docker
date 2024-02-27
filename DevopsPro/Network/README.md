@@ -93,3 +93,39 @@ docker network create --subnet=10.0.0.0/16 --gateway=10.0.0.1 novaredee
 ```
 
 <p style="text-align: justify;">Em resumo, a criação de uma rede bridge no Docker envolve a criação de uma rede local isolada, a conexão de contêineres a essa rede. Isso facilita a comunicação eficiente entre contêineres e fornece um ambiente isolado para aplicações em execução.</p>
+
+<h1>Rede Host</h1>
+
+<p style="text-align: justify;">
+A rede host no Docker é um modelo de rede que permite que um contêiner compartilhe diretamente o namespace de rede do host. Isso elimina o isolamento de rede entre o host e o contêiner, proporcionando vantagens em termos de desempenho. Aqui está um resumo sobre a rede host no Docker:</p>
+
+<ol>
+  <li style="text-align: justify;">Compartilhamento do Namespace de Rede</li>
+  <ul>
+    <li style="text-align: justify;">Na rede host, o contêiner compartilha diretamente o namespace de rede do host, o que significa que ele usa a pilha de rede do host, incluindo interfaces, endereços IP e portas.</li>
+  </ul>
+  <li style="text-align: justify;">Desempenho Aprimorado</li>
+  <ul>
+    <li style="text-align: justify;">Por não introduzir uma camada adicional de virtualização da rede, a rede host pode oferecer melhor desempenho em comparação com outros modelos de rede, como bridge.</li>
+  </ul>
+  <li style="text-align: justify;">Mesma Rede do Host</li>
+  <ul>
+    <li style="text-align: justify;">O contêiner na rede host utiliza a mesma rede que o host, tornando-o acessível diretamente na mesma rede local.</li>
+  </ul>
+  <li style="text-align: justify;">Exposição Direta de Portas</li>
+  <ul>
+    <li style="text-align: justify;">Ao contrário de outros modelos de rede, como bridge, a rede host não requer a exposição de portas para permitir a comunicação com serviços dentro do contêiner. Os serviços são acessíveis diretamente nas mesmas portas do host.</li>
+  </ul>
+  <li style="text-align: justify;">Conexão com Redes Externas</li>
+  <ul>
+    <li style="text-align: justify;">Contêineres na rede host podem se comunicar diretamente com recursos fora do host, conectando-se a redes externas, se necessário.</li>
+  </ul>
+</ol>
+
+<p style="text-align: justify;">Veja o exemplo a seguir utilizando a rede host.</p>
+
+```bash
+docker run --network=host -d meucontainer
+```
+
+<p style="text-align: justify;">A escolha entre redes bridge e host depende dos requisitos específicos da aplicação. A rede host é mais adequada quando o desempenho é crucial, e a aplicação precisa de acesso direto aos recursos da máquina host. No entanto, a falta de isolamento de rede pode ser uma consideração importante em termos de segurança e gerenciamento de recursos em ambientes específicos.</p>
