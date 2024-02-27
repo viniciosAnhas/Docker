@@ -129,3 +129,38 @@ docker run --network=host -d meucontainer
 ```
 
 <p style="text-align: justify;">A escolha entre redes bridge e host depende dos requisitos específicos da aplicação. A rede host é mais adequada quando o desempenho é crucial, e a aplicação precisa de acesso direto aos recursos da máquina host. No entanto, a falta de isolamento de rede pode ser uma consideração importante em termos de segurança e gerenciamento de recursos em ambientes específicos.</p>
+
+<h1>Rede None</h1>
+
+<p style="text-align: justify;">A rede "none" no Docker é um modelo de rede que isola completamente um contêiner da rede. Isso significa que o contêiner não possui interfaces de rede e não pode se comunicar com a rede do host ou outros contêineres. Aqui estão os principais pontos sobre a rede "none" no Docker:</p>
+
+<ol>
+  <li style="text-align: justify;">Isolamento Completo</li>
+  <ul>
+    <li style="text-align: justify;">A rede "none" isola totalmente o contêiner da rede, removendo todas as interfaces de rede do contêiner.</li>
+  </ul>
+  <li style="text-align: justify;">Sem Acesso à Rede do Host</li>
+  <ul>
+    <li style="text-align: justify;">Contêineres na rede "none" não têm acesso à rede do host. Eles não podem se comunicar com outros contêineres ou serviços no host.</li>
+  </ul>
+  <li style="text-align: justify;">Sem Exposição de Portas</li>
+  <ul>
+    <li style="text-align: justify;">Contêineres na rede "none" não podem expor portas para se comunicarem com serviços externos. Eles ficam isolados da rede e dos serviços externos.</li>
+  </ul>
+  <li style="text-align: justify;">Utilizado para Ambientes Isolados</li>
+  <ul>
+    <li style="text-align: justify;">A rede "none" é útil em cenários em que é necessário um isolamento total da rede, como para contêineres que executam tarefas específicas sem a necessidade de conectividade de rede.</li>
+  </ul>
+  <li style="text-align: justify;">Sem DNS Interno</li>
+  <ul>
+    <li style="text-align: justify;">Contêineres na rede "none" não têm DNS interno, o que significa que a resolução de nomes pode ser desafiadora sem uma configuração adicional.</li>
+  </ul>
+</ol>
+
+<p style="text-align: justify;">Veja o exemplo a seguir utilizando a rede none.</p>
+
+```bash
+docker run --network=none -d meucontainer
+```
+
+<p style="text-align: justify;">Em resumo, a rede "none" no Docker fornece isolamento total do contêiner em termos de conectividade de rede. É útil em situações em que a rede é desnecessária ou quando a segurança e o isolamento são prioridades. No entanto, seu uso é limitado a casos específicos devido à falta de conectividade de rede.</p>
