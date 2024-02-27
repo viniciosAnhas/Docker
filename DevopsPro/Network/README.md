@@ -73,3 +73,23 @@ docker network ls
 ```bash
 docker container inspct nomedocontainer
 ```
+
+<p style="text-align: justify;">A criação de uma rede bridge no Docker envolve a configuração de uma rede local isolada, permitindo que contêineres na mesma rede comuniquem entre si. Utilize o comando <i>docker network create nomedarede</i> para cria a sua primeira rede.</p>
+
+```bash
+docker network create nomedarede
+```
+
+<p style="text-align: justify;">Iremos executar um container com essa rede que criamos a seguir, porem como vamos trabalher com rede que podemos acessar um container nessa mesma network iremos utilizar a resolução de nome utilizando a flag <b>--name</b>, veja o exemplo a seguir.</p>
+
+```bash
+docker run --name ngninx --network nomedarede -d nginx
+```
+
+<p style="text-align: justify;">Também é possivel criar uma nova network passando os parameetros de subnet e de gateway, utilize o comando a seguir.</p>
+
+```bash
+docker network create --subnet=10.0.0.0/16 --gateway=10.0.0.1 novaredee
+```
+
+<p style="text-align: justify;">Em resumo, a criação de uma rede bridge no Docker envolve a criação de uma rede local isolada, a conexão de contêineres a essa rede. Isso facilita a comunicação eficiente entre contêineres e fornece um ambiente isolado para aplicações em execução.</p>
