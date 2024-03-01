@@ -32,3 +32,53 @@
     <li style="text-align: justify;">É especialmente útil para ambientes de desenvolvimento local, onde vários serviços precisam ser executados e coordenados.</li>
   </ul>
 </ol>
+
+<p style="text-align: justify;">Veja a seguir um exemplo de um arquivo docker compose.</p>
+
+```yaml
+version: "3"
+services:
+  nginx:
+    container_name: nginx
+    image: nginx
+    ports:
+      - "8080:80"
+```
+
+<ul>
+  <li style="text-align: justify;"><b>version</b>: Especifica a versão da sintaxe do Docker Compose utilizada no arquivo. O valor "3" neste caso refere-se à versão específica da sintaxe do Docker Compose.</li>
+  <li style="text-align: justify;"><b>services</b>: Indica o início da seção onde os serviços são definidos. Serviços são instâncias de contêineres que compõem o ambiente Docker orquestrado.</li>
+  <li style="text-align: justify;"><b>nginx</b>: Nome do serviço. Neste exemplo, o serviço é chamado de "nginx". Este nome é usado para referenciar o serviço em outros lugares do arquivo e para identificar o contêiner correspondente.</li>
+  <li style="text-align: justify;"><b>container_name</b>: Especifica um nome personalizado para o contêiner. Neste caso, o contêiner será nomeado como "nginx". Isso é opcional, e se não for fornecido, o Docker gerará automaticamente um nome baseado no serviço.</li>
+  <li style="text-align: justify;"><b>image</b>: Especifica a imagem Docker usada para criar o contêiner do serviço. Neste caso, o serviço "nginx" será baseado na imagem oficial do Nginx disponível no Docker Hub.</li>
+  <li style="text-align: justify;"><b>ports</b>: Define a exposição de portas entre o contêiner e o host. A opção "8080:80" indica que a porta 80 do contêiner será mapeada para a porta 8080 do host. Isso permite acessar o serviço Nginx no host pela porta 8080.</li>
+</ul>
+
+<p style="text-align: justify;">Para executarmos esse arquivo basta usar o comando <i>docker compose up -d</i>.</p>
+
+```bash
+docker compose up -d
+```
+
+<p style="text-align: justify;">Enquanto o <i>docker-compose down</i> é usado para parar e remover os contêineres</p>
+
+```bash
+docker compose down
+```
+
+<p style="text-align: justify;">É possivel colocar mais de um container dento do arquivo docker compose se caso for necessario.</p>
+
+```yaml
+version: "3"
+services:
+  nginx:
+    container_name: nginx
+    image: nginx
+    ports:
+      - "8080:80"
+  nginx02:
+    container_name: nginx02
+    image: nginx
+    ports:
+      - "8181:80"
+```
