@@ -82,3 +82,46 @@ services:
     ports:
       - "8181:80"
 ```
+
+<h1>Variaveis de Ambiente</h1>
+
+<p style="text-align: justify;">Variáveis de ambiente no Docker Compose são usadas para passar informações configuráveis para serviços e contêineres em um ambiente Docker. Elas são especialmente úteis para parametrizar configurações que podem variar dependendo do ambiente ou para facilitar a personalização de contêineres.</p>
+
+<p style="text-align: justify;">Veja a seguir um exemplo de docker compose utilizando variaveis de ambiente.</p>
+
+```yaml
+version: "3"
+services:
+  postgre:
+    container_name: postgresql
+    image: postgres:12.17
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 123
+      POSTGRES_USER: compose
+      POSTGRES_DB: compose_db
+```
+
+<p style="text-align: justify;">No exemplo acima colocamos tres variaveis de ambiente para o container do posgres, usuario, senha e nome do banco que iremos conectar.</p>
+
+<p style="text-align: justify;">Tambem é possivel colocra as variaveis de ambiente em um arquivo <b>.env</b> para facilitar as manutenções futuras.</p>
+
+```yaml
+version: "3"
+services:
+  postgre:
+    container_name: postgresql
+    image: postgres:12.17
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+```
+<p style="text-align: justify;">Crie um arquivo <b>.env</b> no mesmo diretorio do arquivo <b>compose.yaml</b> e coloque as variaveis no arquivo</p>
+
+```env
+POSTGRES_PASSWORD: 123
+POSTGRES_USER: compose
+POSTGRES_DB: compose_db
+```
