@@ -173,3 +173,23 @@ volumes:
 ```
 
 <p style="text-align: justify;">Veja que o caminho do <b>volumes</b> no service é alterado, ao invez de apontar para um diretorio local da maquina, será apontado para o volume gerenciado pelo docker, para verficar se o volume foi criado basta utilizar o comando <i>docker volume ls</i>.</p>
+
+<p style="text-align: justify;">Caso você ja tenha um volume criado basta usar a flag <i>external: true</i> para especificar que esse volme foi criado separadamente do container utilizando o docker compose.</p>
+
+```yaml
+version: "3"
+services:
+  postgre:
+    container_name: postgresql
+    image: postgres:12.17
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    volumes:
+      - postgre_docker_vol:/var/lib/postgresql/data
+volumes:
+  postgre_docker_vol:
+    name: volume_db_postgres
+    external: true
+```
