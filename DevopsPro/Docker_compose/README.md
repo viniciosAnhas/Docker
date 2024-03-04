@@ -148,3 +148,27 @@ services:
 ```
 
 <p style="text-align: justify;">Criamos um diretorio chamado postgre_vol para armazenar os registros do container como exemplo.</p>
+
+<h1>Docker Volume</h1>
+
+<p style="text-align: justify;">Os volumes no Docker Compose são uma maneira de gerenciar armazenamento persistente para serviços e contêineres. Eles fornecem uma solução para o armazenamento de dados que precisa sobreviver ao ciclo de vida dos contêineres.</p>
+
+<p style="text-align: justify;">Veja um exemplo utilizando o docker volume com docker compose.</p>
+
+```yaml
+version: "3"
+services:
+  postgre:
+    container_name: postgresql
+    image: postgres:12.17
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    volumes:
+      - postgre_docker_vol:/var/lib/postgresql/data
+volumes:
+  postgre_docker_vol:
+```
+
+<p style="text-align: justify;">Veja que o caminho do <b>volumes</b> no service é alterado, ao invez de apontar para um diretorio local da maquina, será apontado para o volume gerenciado pelo docker, para verficar se o volume foi criado basta utilizar o comando <i>docker volume ls</i>.</p>
