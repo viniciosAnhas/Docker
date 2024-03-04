@@ -169,6 +169,7 @@ services:
       - postgre_docker_vol:/var/lib/postgresql/data
 volumes:
   postgre_docker_vol:
+    name: postgre_volume
 ```
 
 <p style="text-align: justify;">Veja que o caminho do <b>volumes</b> no service é alterado, ao invez de apontar para um diretorio local da maquina, será apontado para o volume gerenciado pelo docker, para verficar se o volume foi criado basta utilizar o comando <i>docker volume ls</i>.</p>

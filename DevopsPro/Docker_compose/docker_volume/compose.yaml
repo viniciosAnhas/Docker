@@ -11,3 +11,4 @@ services:
       - postgre_docker_vol:/var/lib/postgresql/data
 volumes:
   postgre_docker_vol:
+    name: postgre_volume
