@@ -118,10 +118,33 @@ services:
     env_file:
       - .env
 ```
-<p style="text-align: justify;">Crie um arquivo <b>.env</b> no mesmo diretorio do arquivo <b>compose.yaml</b> e coloque as variaveis no arquivo</p>
+<p style="text-align: justify;">Crie um arquivo <b>.env</b> no mesmo diretorio do arquivo <b>compose.yaml</b> e coloque as variaveis no arquivo.</p>
 
 ```env
 POSTGRES_PASSWORD: 123
 POSTGRES_USER: compose
 POSTGRES_DB: compose_db
 ```
+
+<h1>Volume Bind Mount</h1>
+
+<p style="text-align: justify;">
+O volume "bind mount" no Docker Compose é uma técnica que permite montar diretórios ou arquivos de um sistema de arquivos do host diretamente em um contêiner. Essa abordagem é útil para compartilhar dados entre o host e o contêiner de maneira flexível.</p>
+
+<p style="text-align: justify;">Veja um exemplo utilizando o Bind Mount com docker compose.</p>
+
+```yaml
+version: "3"
+services:
+  postgre:
+    container_name: postgresql
+    image: postgres:12.17
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    volumes:
+      - C:\Users\HxTos\Documents\Git\Docker\DevopsPro\Docker_compose\bind_mount\postgre_vol:/var/lib/postgresql/data
+```
+
+<p style="text-align: justify;">Criamos um diretorio chamado postgre_vol para armazenar os registros do container como exemplo.</p>
