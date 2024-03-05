@@ -196,7 +196,7 @@ volumes:
 
 <h1>Docker Network Bridge</h1>
 
-<p style="text-align: justify;">A rede bridge no Docker Compose refere-se ao modelo de rede padrão utilizado para conectar contêineres na mesma máquina host. Ela cria uma rede local isolada que facilita a comunicação entre os contêineres. </p>
+<p style="text-align: justify;">A rede bridge no Docker Compose refere-se ao modelo de rede padrão utilizado para conectar contêineres na mesma máquina host. Ela cria uma rede local isolada que facilita a comunicação entre os contêineres.</p>
 
 <p style="text-align: justify;">Veja um exemplo utilizando a rede bridge com docker compose.</p>
 
@@ -279,4 +279,28 @@ networks:
     name: db_network_bridge
     external: true
     driver: bridge
+```
+
+<h1>Docker Network Host Driver</h1>
+
+<p style="text-align: justify;">O Docker Compose suporta o uso do driver de rede host, que permite que um contêiner compartilhe diretamente o namespace de rede do host.</p>
+
+<p style="text-align: justify;">Veja um exemplo utilizando a rede host com docker compose.</p>
+
+```yaml
+version: "3"
+services:
+  postgre:
+    container_name: postgresql
+    image: postgres:12.17
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    volumes:
+      - postgre_docker_vol:/var/lib/postgresql/data
+    network_mode: "host"
+volumes:
+  postgre_docker_vol:
+    name: postgre_volume
 ```
