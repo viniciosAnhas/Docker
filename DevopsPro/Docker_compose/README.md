@@ -193,3 +193,90 @@ volumes:
     name: volume_db_postgres
     external: true
 ```
+
+<h1>Docker Network Bridge</h1>
+
+<p style="text-align: justify;">A rede bridge no Docker Compose refere-se ao modelo de rede padrão utilizado para conectar contêineres na mesma máquina host. Ela cria uma rede local isolada que facilita a comunicação entre os contêineres. </p>
+
+<p style="text-align: justify;">Veja um exemplo utilizando a rede bridge com docker compose.</p>
+
+```yaml
+version: "3"
+services:
+  postgre:
+    container_name: postgresql
+    image: postgres:12.17
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    volumes:
+      - postgre_docker_vol:/var/lib/postgresql/data
+    networks:
+      - db_net
+volumes:
+  postgre_docker_vol:
+    name: postgre_volume
+networks:
+  db_net:
+    name: db_network
+    driver: bridge
+```
+
+<p style="text-align: justify;">Caso o seu arquivo compose possua mais do que um service é necessario especificar a network para todos.</p>
+
+```yaml
+version: "3"
+services:
+  postgre:
+    container_name: postgresql
+    image: postgres:12.17
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    volumes:
+      - postgre_docker_vol:/var/lib/postgresql/data
+    networks:
+      - db_net
+  nginx:
+    container_name: nginx
+    image: nginx
+    ports:
+      - 8080:80
+    networks:
+      - db_net
+volumes:
+  postgre_docker_vol:
+    name: postgre_volume
+networks:
+  db_net:
+    name: db_network
+    driver: bridge
+```
+
+<p style="text-align: justify;">Da mesma maneira que vimos no volume, se caso ja possuimos um volume criado e precisamos usar esse volume, precisamos usar a flag <b>external</b>, com a network e a mesma coisa, veja um exemplo.</p>
+
+```yaml
+version: "3"
+services:
+  postgre:
+    container_name: postgresql
+    image: postgres:12.17
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    volumes:
+      - postgre_docker_vol:/var/lib/postgresql/data
+    networks:
+      - db_net
+volumes:
+  postgre_docker_vol:
+    name: postgre_volume
+networks:
+  db_net:
+    name: db_network_bridge
+    external: true
+    driver: bridge
+```
