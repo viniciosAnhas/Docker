@@ -304,3 +304,43 @@ volumes:
   postgre_docker_vol:
     name: postgre_volume
 ```
+
+<h1>Ordenando a execução dos containers</h1>
+
+<p style="text-align: justify;">No Docker Compose, é possível controlar a ordem de execução dos contêineres usando a configuração <b>depends_on</b>, podendo assim especificar a ordem em que os serviços devem ser iniciados. Ele aceita uma lista de serviços e determina que um serviço só será iniciado após a inicialização bem-sucedida dos serviços listados em <b>depends_on</b>.</p>
+
+<p style="text-align: justify;">Veja um exemplo utilizando o depends_on.</p>
+
+```yaml
+version: "3"
+services:
+  postgre:
+    container_name: postgresql
+    image: postgres:12.17
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    volumes:
+      - postgre_docker_vol:/var/lib/postgresql/data
+    networks:
+      - db_net
+  nginx:
+    container_name: nginx
+    image: nginx
+    ports:
+      - 8080:80
+    networks:
+      - db_net
+    depends_on:
+      - postgre
+volumes:
+  postgre_docker_vol:
+    name: postgre_volume
+networks:
+  db_net:
+    name: db_network
+    driver: bridge
+```
+
+<p style="text-align: justify;">Neste caso o container do postgre sera criando antes do container do nginx</p>
