@@ -309,7 +309,7 @@ volumes:
 
 <p style="text-align: justify;">No Docker Compose, é possível controlar a ordem de execução dos contêineres usando a configuração <b>depends_on</b>, podendo assim especificar a ordem em que os serviços devem ser iniciados. Ele aceita uma lista de serviços e determina que um serviço só será iniciado após a inicialização bem-sucedida dos serviços listados em <b>depends_on</b>.</p>
 
-<p style="text-align: justify;">Veja um exemplo utilizando o depends_on.</p>
+<p style="text-align: justify;">Veja um exemplo utilizando o <b>depends_on</b>.</p>
 
 ```yaml
 version: "3"
@@ -343,4 +343,40 @@ networks:
     driver: bridge
 ```
 
-<p style="text-align: justify;">Neste caso o container do postgre sera criando antes do container do nginx</p>
+<p style="text-align: justify;">Neste caso o container do postgre sera criando antes do container do nginx.</p>
+
+<h1>Parametrizar o compose com variaveis de ambiente</h1>
+
+<p style="text-align: justify;">É possível parametrizar o arquivo Docker Compose com variáveis de ambiente para tornar a configuração mais flexível e dinâmica. O Docker Compose suporta a substituição de variáveis de ambiente em várias partes do arquivo, incluindo serviços, volumes, redes e outros.</p>
+
+<p style="text-align: justify;">As variáveis de ambiente são definidas em um arquivo <b>.env</b> no mesmo diretório do arquivo Compose ou podem ser definidas diretamente no ambiente de execução antes de iniciar o docker compose.</p>
+
+<p style="text-align: justify;">Veja um exemplo utilizando variaveis de abiente com docker compose.</p>
+
+```yaml
+version: "3"
+services:
+  postgre:
+    container_name: postgresql
+    image: postgres:${POSTGRES_TAG}
+    ports:
+      - ${POSTGRES_PORT}:5432
+    env_file:
+      - .env
+```
+
+<p style="text-align: justify;">Neste exemplo colocamos os valores das variaveis dentro do arquivo <b>.env</b>.</p>
+
+```env
+POSTGRES_PASSWORD: 123
+POSTGRES_USER: compose
+POSTGRES_DB: compose_db
+POSTGRES_TAG = 12.17
+POSTGRES_PORT = 5432
+```
+
+<p style="text-align: justify;">Caso voce queira ver como o arquivo compose com a subistituição das variavies antes de executá lo, utilize o comando <i>docker compose config</i>.</p>
+
+```bash
+docker compose config
+```
