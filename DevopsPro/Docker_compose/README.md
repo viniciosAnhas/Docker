@@ -60,7 +60,7 @@ services:
 docker compose up -d
 ```
 
-<p style="text-align: justify;">Enquanto o <i>docker-compose down</i> é usado para parar e remover os contêineres</p>
+<p style="text-align: justify;">Enquanto o <i>docker-compose down</i> é usado para parar e remover os contêineres.</p>
 
 ```bash
 docker compose down
