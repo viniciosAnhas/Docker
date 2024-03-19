@@ -1,0 +1,9 @@
+version: "3"
+services:
+  postgre:
+    container_name: postgresql
+    image: postgres:${POSTGRES_TAG}
+    ports:
+      - ${POSTGRES_PORT}:5432
+    env_file:
+      - .env

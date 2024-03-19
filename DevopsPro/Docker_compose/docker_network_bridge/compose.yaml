@@ -1,0 +1,19 @@
+version: "3"
+services:
+  postgre:
+    container_name: postgresql
+    image: postgres:12.17
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    volumes:
+      - postgre_docker_vol:/var/lib/postgresql/data
+    networks:
+      - db_net
+volumes:
+  postgre_docker_vol:
+    name: postgre_volume
+networks:
+  db_net:
+    driver: bridge
