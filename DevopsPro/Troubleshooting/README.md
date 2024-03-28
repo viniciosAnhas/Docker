@@ -54,3 +54,46 @@ O troubleshooting no Docker refere-se ao processo de identificar, diagnosticar e
 </ol>
 
 <p style="text-align: justify;">Em resumo, o comando docker events é uma ferramenta útil para monitorar eventos do Docker em tempo real, fornecendo informações detalhadas sobre mudanças de estado e atividades no ambiente Docker. Ele é amplamente utilizado para monitoramento, automação, segurança e auditoria em ambientes Docker.</p>
+
+<h1>Docker logs</h1>
+
+<p style="text-align: justify;">O comando docker logs é utilizado para visualizar os logs de um contêiner específico no Docker. Aqui está um resumo sobre o docker logs:</p>
+
+<ol>
+  <li style="text-align: justify;">Visualização de Logs</li>
+  <ul>
+    <li style="text-align: justify;">O comando docker logs é usado para visualizar os logs gerados por um contêiner em tempo real ou em um determinado período de tempo.</li>
+  </ul>
+  <li style="text-align: justify;">Logs Multilinha</li>
+  <ul>
+    <li style="text-align: justify;">Os logs gerados por um contêiner podem ser multilinha, o que significa que uma única mensagem de log pode ser dividida em várias linhas. O comando docker logs exibe essas mensagens multilinha de forma legível.</li>
+  </ul>
+  <li style="text-align: justify;">Identificação de Problemas</li>
+  <ul>
+    <li style="text-align: justify;">A visualização dos logs de um contêiner é útil para identificar problemas de execução, erros de aplicativos, mensagens de depuração e eventos significativos.</li>
+  </ul>
+  <li style="text-align: justify;">Monitoramento de Saúde</li>
+  <ul>
+    <li style="text-align: justify;">Os logs de um contêiner podem fornecer informações sobre a saúde e o status do aplicativo em execução dentro do contêiner. O monitoramento regular dos logs pode ajudar a identificar problemas de desempenho ou de disponibilidade.</li>
+  </ul>
+</ol>
+
+<p style="text-align: justify;">Você pode visualizar os logs de um contêiner especificando seu nome ou ID como argumento para o comando docker logs.</p>
+
+```bash
+docker logs [nome_do_contêiner ou ID_do_contêiner]
+```
+
+<p style="text-align: justify;">Você pode filtrar os logs por diferentes critérios, como nível de log (por exemplo, erro, aviso, informação), data/hora ou padrões de texto específicos.</p>
+
+```bash
+docker logs --since="2022-01-01" [nome_do_contêiner ou ID_do_contêiner]
+```
+
+<p style="text-align: justify;">Os logs de um contêiner podem ser redirecionados para um arquivo local para análise posterior ou armazenamento. Isso pode ser feito usando redirecionamento de saída.</p>
+
+```bash
+docker logs [nome_do_contêiner ou ID_do_contêiner] > logs.txt
+```
+
+<p style="text-align: justify;">O comando docker logs é uma ferramenta útil para visualizar e analisar os logs de contêineres no Docker, permitindo que os usuários obtenham informações sobre o funcionamento e o estado dos aplicativos em execução dentro dos contêineres. Ele é amplamente utilizado para solução de problemas, monitoramento e manutenção de ambientes Docker.</p>
