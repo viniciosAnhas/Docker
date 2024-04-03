@@ -97,3 +97,35 @@ docker logs [nome_do_contêiner ou ID_do_contêiner] > logs.txt
 ```
 
 <p style="text-align: justify;">O comando docker logs é uma ferramenta útil para visualizar e analisar os logs de contêineres no Docker, permitindo que os usuários obtenham informações sobre o funcionamento e o estado dos aplicativos em execução dentro dos contêineres. Ele é amplamente utilizado para solução de problemas, monitoramento e manutenção de ambientes Docker.</p>
+
+<h1>Docker inspect</h1>
+
+<p style="text-align: justify;">O comando docker inspect é utilizado para obter informações detalhadas sobre um ou mais objetos Docker, como contêineres, imagens, volumes, redes e plugins. Aqui está um resumo sobre o docker inspect.</p>
+
+<ol>
+  <li style="text-align: justify;">Informações Detalhadas</li>
+  <ul>
+    <li style="text-align: justify;">O comando docker inspect fornece informações detalhadas sobre um objeto Docker específico. Isso inclui metadados, configurações, estados e outras propriedades do objeto.</li>
+  </ul>
+  <li style="text-align: justify;">Formato JSON</li>
+  <ul>
+    <li style="text-align: justify;">As informações retornadas pelo docker inspect são formatadas em JSON, o que permite fácil análise e processamento programático dos dados.</li>
+  </ul>
+  <li style="text-align: justify;">Objetos Suportados</li>
+  <ul>
+    <li style="text-align: justify;">O docker inspect pode ser usado para inspecionar diversos tipos de objetos Docker, incluindo contêineres, imagens, volumes, redes e plugins.</li>
+  </ul>
+  <li style="text-align: justify;">Detalhes de Configuração</li>
+  <ul>
+    <li style="text-align: justify;">Para contêineres, por exemplo, o comando docker inspect fornece informações sobre a configuração do contêiner, como variáveis de ambiente, comandos de inicialização, configurações de rede e montagens de volumes.</li>
+  </ul>
+</ol>
+
+<p style="text-align: justify;">Você pode inspecionar um objeto Docker especificando seu nome ou ID como argumento para o comando docker inspect.
+</p>
+
+```bash
+docker inspect [nome_do_objeto ou ID_do_objeto]
+```
+
+<p style="text-align: justify;">O comando docker inspect é uma ferramenta poderosa para obter informações detalhadas sobre objetos Docker e é amplamente utilizado para solução de problemas, automação, análise de configurações e melhorias de segurança. Ele fornece uma visão profunda do ambiente Docker, permitindo que os usuários compreendam e controlem melhor seus recursos e configurações.</p>
