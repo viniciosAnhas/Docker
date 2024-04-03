@@ -129,3 +129,32 @@ docker inspect [nome_do_objeto ou ID_do_objeto]
 ```
 
 <p style="text-align: justify;">O comando docker inspect é uma ferramenta poderosa para obter informações detalhadas sobre objetos Docker e é amplamente utilizado para solução de problemas, automação, análise de configurações e melhorias de segurança. Ele fornece uma visão profunda do ambiente Docker, permitindo que os usuários compreendam e controlem melhor seus recursos e configurações.</p>
+
+<h1>Docker top</h1>
+
+<p style="text-align: justify;">O comando docker top é usado para exibir os processos em execução dentro de um contêiner Docker. Aqui está um resumo sobre o docker top.</p>
+
+<ol>
+  <li style="text-align: justify;">Exibição de Processos</li>
+  <ul>
+    <li style="text-align: justify;">O docker top mostra os processos em execução dentro de um contêiner Docker, semelhante ao comando top no Linux.</li>
+  </ul>
+  <li style="text-align: justify;">Visão Geral dos Processos</li>
+  <ul>
+    <li style="text-align: justify;">O comando exibe uma visão geral dos processos dentro do contêiner, incluindo informações como PID (Identificador do Processo), nome do usuário, tempo de CPU consumido, tempo de execução e o comando sendo executado.</li>
+  </ul>
+  <li style="text-align: justify;">Identificação de Problemas</li>
+  <ul>
+    <li style="text-align: justify;">O comando pode ser usado para diagnosticar problemas dentro de um contêiner, identificando processos em execução que podem estar consumindo recursos excessivos ou causando problemas de desempenho.</li>
+  </ul>
+  <li style="text-align: justify;">Monitoramento de Atividades</li>
+  <ul>
+    <li style="text-align: justify;">O docker top é útil para monitorar as atividades em tempo real dentro de um contêiner, permitindo que os usuários identifiquem processos em execução, recursos consumidos e atividades de sistema.</li>
+  </ul>
+</ol>
+
+<p style="text-align: justify;">Você pode listar os processos de um contêiner específico, especificando seu nome ou ID como argumento para o comando docker top.</p>
+
+```bash
+docker top [nome_do_contêiner ou ID_do_contêiner]
+```
