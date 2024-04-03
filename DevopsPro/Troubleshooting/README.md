@@ -187,3 +187,40 @@ docker stats [nome_do_contêiner ou ID_do_contêiner]
 ```
 
 <p style="text-align: justify;">O comando docker stats é uma ferramenta valiosa para monitoramento de recursos em tempo real em contêineres Docker. Ele fornece uma visão detalhada e atualizada do uso de recursos, permitindo que os usuários identifiquem rapidamente problemas de desempenho e façam ajustes conforme necessário.</p>
+
+<h1>Docker exec</h1>
+
+<p style="text-align: justify;">O comando docker exec é usado para executar comandos dentro de um contêiner Docker em execução. Aqui está um resumo sobre o docker exec.</p>
+
+<ol>
+  <li style="text-align: justify;">Execução de Comandos</li>
+  <ul>
+    <li style="text-align: justify;">O docker exec permite executar comandos dentro de um contêiner Docker em execução, sem a necessidade de abrir uma nova sessão de shell no contêiner.</li>
+  </ul>
+  <li style="text-align: justify;">Execução de Comandos em Contêineres em Execução.</li>
+  <ul>
+    <li style="text-align: justify;">O docker exec só pode ser usado em contêineres que estão em execução. Se um contêiner estiver parado, você precisará iniciar antes de poder executar comandos dentro dele.</li>
+  </ul>
+  <li style="text-align: justify;">Comunicação com Contêineres em Rede</li>
+  <ul>
+    <li style="text-align: justify;">O docker exec pode ser usado para executar comandos em contêineres conectados à mesma rede Docker, facilitando a comunicação entre contêineres.</li>
+  </ul>
+  <li style="text-align: justify;">Execução de Comandos em Contêineres em Produção</li>
+  <ul>
+    <li style="text-align: justify;">O docker exec pode ser usado em ambientes de produção para executar comandos de manutenção ou depuração em contêineres sem interromper os serviços em execução.</li>
+  </ul>
+</ol>
+
+<p style="text-align: justify;">Você pode especificar o nome ou o ID do contêiner como argumento para o comando docker exec.</p>
+
+```bash
+docker exec [nome_do_contêiner ou ID_do_contêiner] [comando]
+```
+
+<p style="text-align: justify;">Você pode executar comandos dentro do contêiner como um usuário específico, especificando a opção -u.</p>
+
+```bash
+docker exec -u [usuário] [nome_do_contêiner ou ID_do_contêiner] [comando]
+```
+
+<p style="text-align: justify;">O comando docker exec é uma ferramenta essencial para interagir com contêineres Docker em execução, permitindo a execução de comandos, depuração e manutenção dentro do ambiente do contêiner de forma conveniente e eficiente.</p>
