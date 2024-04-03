@@ -158,3 +158,32 @@ docker inspect [nome_do_objeto ou ID_do_objeto]
 ```bash
 docker top [nome_do_contêiner ou ID_do_contêiner]
 ```
+
+<p style="text-align: justify;">O comando docker top é uma ferramenta útil para visualizar os processos em execução dentro de contêineres Docker e é frequentemente usado para monitoramento em tempo real, diagnóstico de problemas e análise de desempenho. Ele fornece uma visão instantânea das atividades dentro de um contêiner, permitindo que os usuários compreendam melhor o que está acontecendo dentro do ambiente de contêineres.</p>
+
+<h1>Docker stats</h1>
+
+<p style="text-align: justify;">O comando docker stats é utilizado para exibir estatísticas de uso de recursos de contêineres em tempo real. Aqui está um resumo sobre o docker stats.</p>
+
+<ol>
+  <li style="text-align: justify;">Monitoramento de Recursos</li>
+  <ul>
+    <li style="text-align: justify;">O docker stats exibe estatísticas em tempo real sobre o uso de CPU, memória, rede e E/S (entrada/saída) de contêineres Docker em execução.</li>
+  </ul>
+  <li style="text-align: justify;">Visão Geral de Recursos</li>
+  <ul>
+    <li style="text-align: justify;">O comando fornece uma visão geral dos recursos utilizados por um contêiner, incluindo o uso atual, uso médio, limite e percentual de uso em relação aos recursos disponíveis.</li>
+  </ul>
+  <li style="text-align: justify;">Identificação de Problemas</li>
+  <ul>
+    <li style="text-align: justify;">O docker stats é útil para identificar problemas de desempenho ou gargalos de recursos, permitindo que os usuários identifiquem rapidamente contêineres que estão consumindo recursos excessivos.</li>
+  </ul>
+</ol>
+
+<p style="text-align: justify;">Você pode exibir estatísticas para um contêiner específico especificando seu nome ou ID como argumento para o comando docker stats.</p>
+
+```bash
+docker stats [nome_do_contêiner ou ID_do_contêiner]
+```
+
+<p style="text-align: justify;">O comando docker stats é uma ferramenta valiosa para monitoramento de recursos em tempo real em contêineres Docker. Ele fornece uma visão detalhada e atualizada do uso de recursos, permitindo que os usuários identifiquem rapidamente problemas de desempenho e façam ajustes conforme necessário.</p>
